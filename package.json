@@ -7,7 +7,8 @@
   "scripts": {
     "build": "tsc -p .",
     "test": "echo \"Warning: no test specified\" && exit 0",
-    "preversion": "rimraf dist && npm run build && npm test"
+    "preversion": "rimraf dist && npm run build && npm test",
+    "postpublish": "git push --tags"
   },
   "repository": {
     "type": "git",
