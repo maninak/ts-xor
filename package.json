@@ -16,11 +16,9 @@
   },
   "keywords": [
     "typescript",
-    "type",
-    "xor",
-    "mutually",
-    "exclusive",
-    "maninak"
+    "custom types",
+    "mutually exlusive keys",
+    "xor"
   ],
   "author": "Kostis Maninakis <maninak@protonmail.com> (https://maninak.github.io/)",
   "license": "MIT",
