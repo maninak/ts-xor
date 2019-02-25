@@ -2,6 +2,8 @@
 
 Compose custom types containing mutually exclusive keys, using this generic Typescript helper type.
 
+>Ts-xor is a micro-library with zero dependencies, designed to tackle a very specific problem and nothing more. Since it only enhances your typings, the overhead to your production bundle is zero (0) bytes.
+
 ## Description
 
 Typescript's union operator (`|`) allows combining two types `A` and `B`, into a superset type C which _can_ contain all the members of both `A` and `B`.
@@ -96,6 +98,10 @@ const ourTestCase: WeatherForecast = {
   id: 123456
 }
 ```
+
+## NPM
+
+This library is [published on NPM](https://www.npmjs.com/package/ts-xor).
 
 ## Licence
 
