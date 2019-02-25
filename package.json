@@ -1,6 +1,6 @@
 {
   "name": "ts-xor",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Compose custom types containing mutually exclusive keys, using this generic Typescript helper type.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
