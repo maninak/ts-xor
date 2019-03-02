@@ -1,12 +1,4 @@
-/**
- * Get the keys of T without any keys of U.
- */
-type Without<T, U> = {
-  [P in Exclude<keyof T, keyof U>]
-  ?
-  : never
-}
-
+import { Without } from './Without.type'
 
 /**
  * Restrict using either exclusively the keys of T or exclusively the keys of U.
