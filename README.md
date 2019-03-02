@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/maninak/ts-xor.svg?branch=master)](https://travis-ci.org/maninak/ts-xor)
+
 # ts-xor
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/maninak/ts-xor.svg)](https://greenkeeper.io/)
