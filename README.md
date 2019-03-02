@@ -3,6 +3,7 @@
 
 Compose custom types containing mutually exclusive keys, using this generic Typescript helper type.
 
+[![npm version](https://badge.fury.io/js/ts-xor.svg)](https://badge.fury.io/js/ts-xor)
 [![Build Status](https://travis-ci.org/maninak/ts-xor.svg?branch=master)](https://travis-ci.org/maninak/ts-xor)
 [![Greenkeeper badge](https://badges.greenkeeper.io/maninak/ts-xor.svg)](https://greenkeeper.io/)
 
