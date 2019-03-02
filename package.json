@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc -p .",
-    "test": "echo \"Warning: no test specified\" && exit 0",
+    "test": "sh scripts/run-tests.sh",
     "preversion": "rimraf dist && npm run build && npm test",
     "postpublish": "git push --tags"
   },
