@@ -50,10 +50,10 @@ interface B {
 
 let A_XOR_B: XOR<A, B>
 
-A_XOR_B = { a: 'a' }          // OK
-A_XOR_B = { b: 'b' }          // OK
-A_XOR_B = { a: 'a', b: 'b' }  // fails
-A_XOR_B = {}                  // fails
+A_XOR_B = { a: '' }         // OK
+A_XOR_B = { b: '' }         // OK
+A_XOR_B = { a: '', b: '' }  // fails
+A_XOR_B = {}                // fails
 ```
 
 ### A real-life example
