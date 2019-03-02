@@ -7,7 +7,7 @@ printFileFailedTest () {
 TESTS_FAILED=false
 
 # all these tests must pass compilation
-for FILE in $(ls test/should-pass/*.ts)
+for FILE in $(ls test/**/*.pass.spec.ts)
 do
   tsc --noEmit $FILE > /dev/null
   if [ $? -ne 0 ]; then
@@ -17,7 +17,7 @@ do
 done
 
 # each of these tests must fail compilation
-for FILE in $(ls test/should-fail/*.ts)
+for FILE in $(ls test/**/*.fail.spec.ts)
 do
   tsc --noEmit $FILE > /dev/null
   if [ $? -eq 0 ]; then
