@@ -99,6 +99,16 @@ const ourTestCase: WeatherForecast = {
 }
 ```
 
+## Tests and Coverage
+
+The library `ts-xor` is fully covered with acceptance and mutation tests against the typescript compiler itself. The tests can be found inside the `test` folder.
+
+To run all tests locally, execute the following command inside the cloned ts-xor folder:
+
+```sh
+npm test
+```
+
 ## NPM
 
 This library is [published on NPM](https://www.npmjs.com/package/ts-xor).
