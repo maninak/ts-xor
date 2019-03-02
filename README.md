@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/maninak/ts-xor.svg?branch=master)](https://travis-ci.org/maninak/ts-xor)
+
 # ts-xor
 
 Compose custom types containing mutually exclusive keys, using this generic Typescript helper type.
