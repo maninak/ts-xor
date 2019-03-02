@@ -1,8 +1,10 @@
-[![Build Status](https://travis-ci.org/maninak/ts-xor.svg?branch=master)](https://travis-ci.org/maninak/ts-xor)
 
 # ts-xor
 
 Compose custom types containing mutually exclusive keys, using this generic Typescript helper type.
+
+[![Build Status](https://travis-ci.org/maninak/ts-xor.svg?branch=master)](https://travis-ci.org/maninak/ts-xor)
+[![Greenkeeper badge](https://badges.greenkeeper.io/maninak/ts-xor.svg)](https://greenkeeper.io/)
 
 >Ts-xor is a micro-library with zero dependencies, designed to tackle a very specific problem and nothing more. Since it only enhances your typings, the overhead to your production bundle is zero (0) bytes.
 
