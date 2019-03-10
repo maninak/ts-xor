@@ -1,12 +1,6 @@
 import { XOR } from './../../src'
 
-interface A {
-  a: string
-}
-
-interface B {
-  b: string
-}
+import { A, B } from './setup'
 
 let A_XOR_B: XOR<A, B>
 
