@@ -6,8 +6,16 @@ Compose custom types containing mutually exclusive keys, using this generic Type
 [![npm version](https://badge.fury.io/js/ts-xor.svg)](https://badge.fury.io/js/ts-xor)
 [![Build Status](https://travis-ci.org/maninak/ts-xor.svg?branch=master)](https://travis-ci.org/maninak/ts-xor)
 [![Greenkeeper badge](https://badges.greenkeeper.io/maninak/ts-xor.svg)](https://greenkeeper.io/)
+![Last commit](https://badgen.net/github/last-commit/maninak/ts-xor)
 
->Ts-xor is a micro-library with zero dependencies, designed to tackle a very specific problem and nothing more. Since it only enhances your typings, the overhead to your production bundle is zero (0) bytes.
+[![Licence](https://badgen.net/badge/license/MIT/blue)](LICENCE.md)
+[![Downloads per week](https://badgen.net/npm/dw/ts-xor?color=blue)](https://npm-stat.com/charts.html?package=ts-xor&from=2019-02-22)
+[![NPM dependent packages](https://badgen.net/npm/dependents/ts-xor?color=blue)](https://www.npmjs.com/browse/depended/ts-xor)
+[![Github stars](https://badgen.net/github/stars/maninak/ts-xor)](https://github.com/maninak/ts-xor/stargazers)
+
+[![Minified and gzipped size](https://badgen.net/bundlephobia/minzip/ts-xor?color=orange)](https://bundlephobia.com/result?p=ts-xor)
+![Dependencies](https://badgen.net/david/dep/maninak/ts-xor?color=orange)
+
 
 ## Description
 
