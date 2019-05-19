@@ -20,7 +20,7 @@
     "mutually exlusive keys",
     "xor"
   ],
-  "author": "Kostis Maninakis <maninak@protonmail.com> (https://maninak.github.io/)",
+  "author": "Kostis Maninakis <maninak@protonmail.com> (https://maninak.github.io)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/maninak/ts-xor/issues"
