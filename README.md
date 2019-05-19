@@ -70,12 +70,12 @@ A_XOR_B = {}                // fails
 
 ### A real-life example
 
-Say that we have the following specification:
+Say that we have the following specification for the response of a weather forecast service:
 
-1. A weather forecast contains either a forecast member `rain` or a forecast member `snow`, but _never_ both.
-2. The `rain` and `snow` members contain weather accuracy data
-3. The weather accuracy can contain either a member `1h` or a member `3h` with a number value, but _never_ both keys at the same time.
-4. A weather forecast always contains the `station` and `id` members
+1. A weather forecast object _always_ contains the `id` _and_ `station` members
+2. A weather forecast object _always_ contains either a member `rain` _or_ a member `snow`, but _never_ both at the same time.
+3. The rain or snow members are objects containing additional forecast accuracy data
+4. The rain or snow member _always_ contain either a member `1h` or a member `3h` with a number value, but _never_ both keys at the same time.
 
 ```typescript
 import { XOR } from 'ts-xor'
@@ -100,7 +100,7 @@ type WeatherForecast = XOR<WeatherForecastWithRain, WeatherForecastWithSnow>
 const ourTestCase: WeatherForecast = {
   id: 123456,
   station: 'Acropolis Weather Reporter',
-  rain: { '1h': 1 },              // OK
+  // rain: { '1h': 1 },           // OK
   // rain: { '2h': 1 },           // fails
   // rain: { '3h': 1 },           // OK
   // rain: {},                    // fails
