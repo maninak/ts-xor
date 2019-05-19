@@ -4,6 +4,7 @@
     "module": "esnext",
     "target": "es6",
     "declaration": true,
+    "sourceMap": true,
     "declarationMap": true,
     "outDir": "./dist",
   },
