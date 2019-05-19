@@ -1,6 +1,7 @@
 scripts
 src
 test
+tsconfig.json
 .gitignore
 .npmrc
-tsconfig.json
+.travis.yml

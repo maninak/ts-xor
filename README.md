@@ -16,7 +16,6 @@ Compose custom types containing mutually exclusive keys, using this generic Type
 [![Minified and gzipped size](https://badgen.net/bundlephobia/minzip/ts-xor?color=orange)](https://bundlephobia.com/result?p=ts-xor)
 ![Dependencies](https://badgen.net/david/dep/maninak/ts-xor?color=orange)
 
-
 ## Description
 
 Typescript's union operator (`|`) allows combining two types `A` and `B`, into a superset type C which _can_ contain all the members of both `A` and `B`.
@@ -84,8 +83,8 @@ import { XOR } from 'ts-xor'
 type ForecastAccuracy = XOR<{ '1h': number }, { '3h': number }>
 
 interface WeatherForecastBase {
-  station: string
   id: number
+  station: string
 }
 
 interface WeatherForecastWithRain extends WeatherForecastBase {
@@ -99,6 +98,7 @@ interface WeatherForecastWithSnow extends WeatherForecastBase {
 type WeatherForecast = XOR<WeatherForecastWithRain, WeatherForecastWithSnow>
 
 const ourTestCase: WeatherForecast = {
+  id: 123456,
   station: 'Acropolis Weather Reporter',
   rain: { '1h': 1 },              // OK
   // rain: { '2h': 1 },           // fails
@@ -108,7 +108,6 @@ const ourTestCase: WeatherForecast = {
   // lel: { '3h': 1 },            // fails
   // snow: { '3h': 1 },           // OK
   // when BOTH `rain` AND `snow` are declared, compilation fails
-  id: 123456
 }
 ```
 
