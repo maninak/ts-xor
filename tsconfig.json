@@ -2,7 +2,7 @@
   "compilerOptions": {
     "strict": true,
     "module": "esnext",
-    "target": "es6",
+    "target": "esnext",
     "declaration": true,
     "sourceMap": true,
     "declarationMap": true,
