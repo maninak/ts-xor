@@ -47,9 +47,9 @@ npm install -D ts-xor # yarn add -D ts-xor
 
 ### A simple example
 
-In any typescript file you can just have:
-
 ```typescript
+// myfile1.ts
+
 import { XOR } from 'ts-xor'
 
 interface A {
@@ -74,10 +74,12 @@ Say that we have the following specification for the response of a weather forec
 
 1. A weather forecast object _always_ contains the `id` _and_ `station` members
 2. A weather forecast object _always_ contains either a member `rain` _or_ a member `snow`, but _never_ both at the same time.
-3. The rain or snow members are objects containing additional forecast accuracy data
-4. The rain or snow member _always_ contain either a member `1h` or a member `3h` with a number value, but _never_ both keys at the same time.
+3. The rain, snow members are objects containing additional forecast accuracy data
+4. The rain, snow members _always_ contain either a member `1h` or a member `3h` with a number value, but _never_ both keys at the same time.
 
 ```typescript
+// myFile2.ts
+
 import { XOR } from 'ts-xor'
 
 type ForecastAccuracy = XOR<{ '1h': number }, { '3h': number }>
@@ -113,7 +115,7 @@ const ourTestCase: WeatherForecast = {
 
 ## Tests and Coverage
 
-The library `ts-xor` is fully covered with acceptance and mutation tests against the typescript compiler itself. The tests can be found inside the [`test`](https://github.com/maninak/ts-xor/tree/master/test) folder.
+The library `ts-xor` is fully covered with smoke, acceptance and mutation tests against the typescript compiler itself. The tests can be found inside the [`test`](https://github.com/maninak/ts-xor/tree/master/test) folder.
 
 To run all tests locally, execute the following command inside your git-cloned `ts-xor` folder:
 
