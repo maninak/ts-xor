@@ -1,10 +1,12 @@
 {
   "compilerOptions": {
+    "strict": true,
     "module": "esnext",
     "target": "es6",
     "declaration": true,
+    "sourceMap": true,
+    "declarationMap": true,
     "outDir": "./dist",
-    "strict": true,
   },
   "include": [
     "src/**/*.ts"
