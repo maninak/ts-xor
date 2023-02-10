@@ -1,3 +1,4 @@
+import { Prettify } from './Prettify.type'
 import { Without } from './Without.type'
 
 /**
@@ -11,5 +12,5 @@ import { Without } from './Without.type'
  * More: https://github.com/maninak/ts-xor/tree/master#description
  */
 export type XOR<T, U> = (T | U) extends object
-  ? (Without<T, U> & U) | (Without<U, T> & T)
+  ? (Prettify<Without<T, U> & U>) | (Prettify<Without<U, T> & T>)
   : T | U
