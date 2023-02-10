@@ -74,7 +74,7 @@ npm install -D ts-xor # yarn add -D ts-xor
 ```typescript
 // example1.ts
 
-import { XOR } from 'ts-xor'
+import type { XOR } from 'ts-xor'
 
 interface A {
   a: string
@@ -104,7 +104,7 @@ Let's assume that we have the following spec for a weather forecast API's respon
 ```typescript
 // example2.ts
 
-import { XOR } from 'ts-xor'
+import type { XOR } from 'ts-xor'
 
 type ForecastAccuracy = XOR<{ '1h': number }, { '3h': number }>
 
@@ -145,7 +145,7 @@ If you want to create a type as the product of the logical XOR operation between
 ```typescript
 // example1.ts
 
-import { XOR } from 'ts-xor'
+import type { XOR } from 'ts-xor'
 
 interface A {
   a: string
