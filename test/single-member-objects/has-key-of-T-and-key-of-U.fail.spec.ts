@@ -1,7 +1,3 @@
-import { XOR } from './../../src'
+import { A_XOR_B } from './setup'
 
-import { A, B } from './setup'
-
-let A_XOR_B: XOR<A, B>
-
-A_XOR_B = { a: '', b: '' } // fails
+const A_XOR_B: A_XOR_B = { a: '', b: '' } // fails

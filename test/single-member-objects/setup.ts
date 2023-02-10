@@ -1,9 +1,11 @@
 import { XOR } from './../../src'
 
-export interface A {
+interface A {
   a: string
 }
 
-export interface B {
+interface B {
   b: string
 }
+
+export type A_XOR_B = XOR<A, B>
