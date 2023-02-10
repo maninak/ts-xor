@@ -18,20 +18,47 @@ Compose custom types containing mutually exclusive keys, using this generic Type
 
 Typescript's union operator (`|`) allows combining two object types `A` and `B`, into a superset type C which _can_ contain all the members of both `A` and `B`.
 
-But sometimes the requirements dictate that we combine two types with mutually exclusive members. So take the members `A.a` and `B.b`. Given `type C = A | B` then we want to impose the restriction that we can set _either_ `C.a` _or_ `C.b` _but never both_ AND _at least one of the two_!
+But sometimes the requirements dictate that we combine two types with mutually exclusive members. So take the members `A.a` and `B.b`. Given `type C = A | B` then we want to impose the restriction that we can set _either_ `C.a` _or_ `C.b` _but never both_ AND _always at least one of the two_!
 
 Typescript does not have this feature built-in.
 
-This package introduces the new custom type `XOR`. You can use XOR to compose your own custom types with mutually exclusive members.
+The package `ts-xor` introduces the new custom type `XOR`. You can use XOR to compose your own custom types with mutually exclusive members.
 
-XOR effectively implements the well-known XOR logical operator from boolean algebra as defined by the following truth table:
+The XOR type effectively implements the well-known XOR logical operator from boolean algebra as defined by the following truth table:
 
 | A | B | Result | Note
 | :-: | :-: | :-: | :-: |
-| 0 | 0 | 0 | achievable with union operator (`\|`) and `ts-xor`
-| 0 | 1 | 1 | achievable with union operator (`\|`) and `ts-xor`
-| 1 | 0 | 1 | achievable with union operator (`\|`) and `ts-xor`
-| 1 | 1 | 0 | achievable only with `ts-xor`
+| 0 | 0 | 0 | achievable with union operator (`\|`) and `XOR`
+| 0 | 1 | 1 | achievable with union operator (`\|`) and `XOR`
+| 1 | 0 | 1 | achievable with union operator (`\|`) and `XOR`
+| 1 | 1 | 0 | achievable only with `XOR`
+
+### Union operator vs the XOR type in practice
+
+If we use the union operator
+
+```ts
+type A_OR_B = A | B
+```
+
+then the derived type is shown in VS Code like so:
+
+![Resulting type when using the union operator](assets/A_OR_B.png)
+
+Whereas if we use the XOR mapped type
+
+```ts
+type A_XOR_B = XOR<A, B>
+```
+
+then the derived type is shown quite differently in VS Code:
+
+![Resulting type when using the XOR mapped type](assets/A_XOR_B.png)
+
+Notice that when using XOR each "variant" of the resulting type contains all keys of one source type plus all keys of the other, with those of the second type defined as _optional_ and at the same time typed as _undefined_.
+
+This trick will not only forbid defining keys of both source types at the same time (since the type of each key is explicitly `undefined`), but also _allow_ us to not need to define all keys all of the time since each set of keys is optional on each variant.
+
 ## Installation
 
 In your typescript powered, npm project, run:
