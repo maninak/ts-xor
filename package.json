@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/maninak/ts-xor#README.md",
   "devDependencies": {
-    "rimraf": "^2.6.3",
-    "typescript": "^3.4.5"
+    "rimraf": "^2.7.1",
+    "typescript": "^3.9.10"
   }
 }
