@@ -3,5 +3,5 @@ import { WeatherForecast } from './setup'
 const test: WeatherForecast = {
   id: 123456,
   station: 'Acropolis Weather Reporter',
-  rain: { '2h': 1 }, // fails
+  rain: { '2h': 1 }, // rejected
 }
