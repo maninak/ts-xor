@@ -20,7 +20,7 @@ Typescript's union operator (`|`) allows combining two object types `A` and `B`,
 
 But sometimes the requirements dictate that we combine two types with mutually exclusive members. So take the members `A.a` and `B.b`. Given `type C = A | B` then we want to impose the restriction that we can set _either_ `C.a` _or_ `C.b` _but never both_ AND _always at least one of the two_!
 
-Typescript does not have this feature built-in.
+[Typescript does not have this feature built-in.](https://github.com/Microsoft/TypeScript/issues/14094)
 
 The package `ts-xor` introduces the new custom type `XOR`. You can use XOR to compose your own custom types with mutually exclusive members.
 
