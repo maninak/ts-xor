@@ -2,13 +2,27 @@
   "name": "ts-xor",
   "version": "1.1.0",
   "description": "Compose custom types containing mutually exclusive keys, using this generic Typescript helper type.",
-  "type": "module",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.mts",
+        "node": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "node": "./dist/index.js"
+      }
+    }
+  },
   "scripts": {
-    "build": "tsc -p .",
-    "test": "sh scripts/run-tests.sh",
-    "preversion": "rimraf dist && npm run build && npm test",
+    "build": "tsup src/index.ts --format esm,cjs --dts --sourcemap --clean",
+    "test": "npm run test:smoke && npm run test:unit ",
+    "test:smoke": "tsc -p . --noEmit",
+    "test:unit": "sh scripts/run-tests.sh",
+    "preversion": "npm run build && npm test",
     "postpublish": "git push --tags"
   },
   "repository": {
@@ -29,7 +43,7 @@
   },
   "homepage": "https://github.com/maninak/ts-xor#README.md",
   "devDependencies": {
-    "rimraf": "^4.1.2",
-    "typescript": "^4.9.5"
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
   }
 }

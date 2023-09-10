@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "strict": true,
-    "module": "esnext",
+    "module": "Node16",
+    "moduleResolution": "Node16",
     "target": "esnext",
     "declaration": true,
     "sourceMap": true,

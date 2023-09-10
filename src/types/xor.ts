@@ -1,5 +1,5 @@
-import { Prettify } from './Prettify.type'
-import { Without } from './Without.type'
+import { Prettify } from './prettify.js'
+import { Without } from './without.js'
 
 /**
  * Restrict using either exclusively the keys of T or exclusively the keys of U.

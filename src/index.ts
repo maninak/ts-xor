@@ -1,1 +1,1 @@
-export * from './types/Xor.type'
+export * from './types/xor.js'
