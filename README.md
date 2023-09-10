@@ -1,8 +1,3 @@
-
-# ts-xor
-
-Compose custom types containing mutually exclusive keys, using this generic Typescript helper type.
-
 [![npm version](https://badgen.net/npm/v/ts-xor?color=green)](https://www.npmjs.com/package/ts-xor)
 [![Licence](https://badgen.net/badge/license/MIT/green)](LICENCE.md)
 
@@ -14,26 +9,34 @@ Compose custom types containing mutually exclusive keys, using this generic Type
 [![Minified and gzipped size](https://badgen.net/bundlephobia/minzip/ts-xor?color=orange)](https://bundlephobia.com/result?p=ts-xor)
 [![0 Dependencies](https://badgen.net/bundlephobia/dependency-count/ts-xor?color=orange)](https://github.com/maninak/ts-xor/blob/87aa237a1b246efa4e8028d89dc7168ba4c4fd84/package.json#L30)
 
+# ts-xor
+
+The npm package `ts-xor` introduces the new mapped type `XOR` that helps you compose your own custom TypeScript types containing mutually exclusive keys.
+
 ## Description
 
-Typescript's union operator (`|`) allows combining two object types `A` and `B`, into a superset type C which _can_ contain all the members of both `A` and `B`.
+### TL;DR
 
-But sometimes the requirements dictate that we combine two types with mutually exclusive members. So take the members `A.a` and `B.b`. Given `type C = A | B` then we want to impose the restriction that we can set _either_ `C.a` _or_ `C.b` _but never both_ AND _always at least one of the two_!
+`ts-xor` implements the well-known [exclusive or](https://en.wikipedia.org/wiki/Exclusive_or) (a.k.a. XOR) logical operator from boolean algebra:
+
+| A | B | XOR | union operator (`\|`) | `ts-xor` |
+| :-: | :-: | :-: | :-: | :-: |
+| 0 | 0 | 0 | 0 ✅ | 0 ✅ |
+| 0 | 1 | 1 | 1 ✅ | 1 ✅ |
+| 1 | 0 | 1 | 1 ✅ | 1 ✅ |
+| 1 | 1 | 0 | 1 ❌ | 0 ✅ |
+
+### Why isn't TypeScript's built-in union operator (`|`) enough?
+
+Typescript's union operator allows combining two object types `A` and `B`, into a _superset_ type C which _can_ contain all the keys of both `A` and `B`.
+
+But sometimes the requirements dictate that we combine two types with _mutually exclusive_ keys.
+
+For example: assume two objects with with keys `A.a` and `B.b`. Given `type C = A | B` then we want to impose the restriction that we can set _either_ `C.a` _or_ `C.b` _but never both_ AND _always at least one of the two_!
 
 [Typescript does not have this feature built-in.](https://github.com/Microsoft/TypeScript/issues/14094)
 
-The package `ts-xor` introduces the new custom type `XOR`. You can use XOR to compose your own custom types with mutually exclusive members.
-
-The XOR type effectively implements the well-known XOR logical operator from boolean algebra as defined by the following truth table:
-
-| A | B | Result | Note
-| :-: | :-: | :-: | :-: |
-| 0 | 0 | 0 | achievable with union operator (`\|`) and `XOR`
-| 0 | 1 | 1 | achievable with union operator (`\|`) and `XOR`
-| 1 | 0 | 1 | achievable with union operator (`\|`) and `XOR`
-| 1 | 1 | 0 | achievable only with `XOR`
-
-### Union operator vs the XOR type in practice
+### Explained by example
 
 If we use the union operator
 
@@ -45,7 +48,7 @@ then the derived type is shown in VS Code like so:
 
 ![Resulting type when using the union operator](assets/A_OR_B.png)
 
-Whereas if we use the XOR mapped type
+Whereas if we use `XOR`:
 
 ```ts
 type A_XOR_B = XOR<A, B>
@@ -55,7 +58,9 @@ then the derived type is shown quite differently in VS Code:
 
 ![Resulting type when using the XOR mapped type](assets/A_XOR_B.png)
 
-Notice that when using XOR each "variant" of the resulting type contains all keys of one source type plus all keys of the other, with those of the second type defined as _optional_ and at the same time typed as _undefined_.
+### How it works
+
+Notice in the example above, that when using XOR each "variant" of the resulting type contains all keys of one source type plus all keys of the other. At the same time those keys of the second type are defined as _optional_ while additionally they are also typed as _undefined_.
 
 This trick will not only forbid defining keys of both source types at the same time (since the type of each key is explicitly `undefined`), but also _allow_ us to not need to define all keys all of the time since each set of keys is optional on each variant.
 
@@ -64,35 +69,28 @@ This trick will not only forbid defining keys of both source types at the same t
 In your typescript powered, npm project, run:
 
 ```sh
-npm install -D ts-xor # yarn add -D ts-xor
+npm install -D ts-xor
 ```
 
-## Examples
+## Usage
 
-### A simple example
+### A simple scenario
 
 ```typescript
-// example1.ts
-
 import type { XOR } from 'ts-xor'
 
-interface A {
-  a: string
-}
-
-interface B {
-  b: string
-}
+interface A { a: string }
+interface B { b: string }
 
 let test: XOR<A, B>
 
 test = { a: '' }         // OK
 test = { b: '' }         // OK
-test = { a: '', b: '' }  // rejected
-test = {}                // rejected
+test = { a: '', b: '' }  // error
+test = {}                // error
 ```
 
-### A real-life example
+### A realistic scenario
 
 Let's assume that we have the following spec for a weather forecast API's response:
 
@@ -102,8 +100,6 @@ Let's assume that we have the following spec for a weather forecast API's respon
 4. The rain, snow members _always_ contain either a member `1h` or a member `3h` with a number value, but _never_ both keys at the same time.
 
 ```typescript
-// example2.ts
-
 import type { XOR } from 'ts-xor'
 
 type ForecastAccuracy = XOR<{ '1h': number }, { '3h': number }>
@@ -127,14 +123,14 @@ const test: WeatherForecast = {
   id: 1,
   station: 'Acropolis',
   // rain: { '1h': 1 },           // OK
-  // rain: { '2h': 1 },           // rejected
+  // rain: { '2h': 1 },           // error
   // rain: { '3h': 1 },           // OK
-  // rain: {},                    // rejected
-  // rain: { '1h': 1 , '3h': 3 }, // rejected
-  // lel: { '3h': 1 },            // rejected
-  // rain: { '3h': 1, lel: 1 },   // rejected
+  // rain: {},                    // error
+  // rain: { '1h': 1 , '3h': 3 }, // error
+  // lel: { '3h': 1 },            // error
+  // rain: { '3h': 1, lel: 1 },   // error
   // snow: { '3h': 1 },           // OK
-                                  // rejected when BOTH `rain` AND `snow` keys are defined at the same time
+                                  // error when BOTH `rain` AND `snow` keys are defined at the same time
 }
 ```
 
@@ -143,32 +139,22 @@ const test: WeatherForecast = {
 If you want to create a type as the product of the logical XOR operation between multiple types (more than two), then nest the generic params.
 
 ```typescript
-// example1.ts
-
 import type { XOR } from 'ts-xor'
 
-interface A {
-  a: string
-}
-
-interface B {
-  b: string
-}
-
-interface C {
-  c: string
-}
+interface A { a: string }
+interface B { b: string }
+interface C { c: string }
 
 let test: XOR<A, XOR<B, C>>
 
 test = { a: '' }         // OK
 test = { b: '' }         // OK
 test = { c: '' }         // OK
-test = { a: '', c: '' }  // rejected
-test = {}                // rejected
+test = { a: '', c: '' }  // error
+test = {}                // error
 ```
 
-## Tests and Coverage
+## Tests and coverage
 
 The library `ts-xor` is fully covered with smoke, acceptance and mutation tests against the typescript compiler itself. The tests can be found inside the [`test`](https://github.com/maninak/ts-xor/tree/master/test) folder.
 
