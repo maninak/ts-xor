@@ -17,6 +17,7 @@
       }
     }
   },
+  "sideEffects": false,
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts --sourcemap --clean",
     "test": "npm run test:smoke && npm run test:unit ",
