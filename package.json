@@ -20,9 +20,10 @@
   "sideEffects": false,
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts --sourcemap --clean",
-    "test": "npm run test:smoke && npm run test:unit ",
+    "test": "npm run test:smoke && npm run test:unit  && npm run test:package",
     "test:smoke": "tsc -p . --noEmit",
     "test:unit": "sh scripts/run-tests.sh",
+    "test:package": "publint",
     "preversion": "npm run build && npm test",
     "postpublish": "git push --tags"
   },
@@ -44,6 +45,7 @@
   },
   "homepage": "https://github.com/maninak/ts-xor#README.md",
   "devDependencies": {
+    "publint": "^0.2.2",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"
   }
