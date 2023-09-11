@@ -1,3 +1,4 @@
 import { A_XOR_B } from './setup'
 
-const test: A_XOR_B = { a: '', b: '' } // rejected
+// @ts-expect-error
+const test: A_XOR_B = { a: '', b: '' }

@@ -7,20 +7,10 @@ printFileFailedTest () {
 TESTS_FAILED=false
 
 # all these tests must pass compilation
-for FILE in $(ls test/**/*.pass.spec.ts)
+for FILE in $(ls test/**/*.spec.ts)
 do
   tsc --noEmit $FILE > /dev/null
   if [ $? -ne 0 ]; then
-    TESTS_FAILED=true
-    printFileFailedTest $FILE
-  fi
-done
-
-# each of these tests must fail compilation
-for FILE in $(ls test/**/*.fail.spec.ts)
-do
-  tsc --noEmit $FILE > /dev/null
-  if [ $? -eq 0 ]; then
     TESTS_FAILED=true
     printFileFailedTest $FILE
   fi

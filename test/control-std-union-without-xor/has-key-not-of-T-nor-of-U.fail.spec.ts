@@ -1,3 +1,4 @@
 import { A_OR_B } from './setup'
 
-const test: A_OR_B = { lel: '' } // rejected
+// @ts-expect-error
+const test: A_OR_B = { lel: '' }

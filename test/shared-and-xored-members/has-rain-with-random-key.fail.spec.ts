@@ -3,5 +3,6 @@ import { WeatherForecast } from './setup'
 const test: WeatherForecast = {
   id: 123456,
   station: 'Acropolis Weather Reporter',
-  rain: { '2h': 1 }, // rejected
+  // @ts-expect-error
+  rain: { '2h': 1 },
 }
