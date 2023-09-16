@@ -11,7 +11,7 @@
 
 # ts-xor
 
-The tiny npm package `ts-xor` introduces the new mapped type `XOR` that helps you compose your own custom TypeScript types containing mutually exclusive keys for zero runtime overhead.
+The npm package `ts-xor` introduces the new mapped type `XOR` that helps you compose your own custom TypeScript types containing mutually exclusive object keys.
 
 ## Description
 
