@@ -11,7 +11,7 @@
 
 # ts-xor
 
-The npm package `ts-xor` introduces the new mapped type `XOR` that helps you compose your own custom TypeScript types containing mutually exclusive keys.
+The tiny npm package `ts-xor` introduces the new mapped type `XOR` that helps you compose your own custom TypeScript types containing mutually exclusive keys for zero runtime overhead.
 
 ## Description
 
@@ -60,9 +60,11 @@ then the derived type is shown quite differently in VS Code:
 
 ### How it works
 
-Notice in the example above, that when using XOR each "variant" of the resulting type contains all keys of one source type plus all keys of the other. At the same time those keys of the second type are defined as _optional_ while additionally they are also typed as _undefined_.
+Notice in the example above, that when using `XOR`, each union branch of the resulting type contains all keys of one source type plus all keys of the other. At the same time, in each variant, those keys of the other type are defined as _optional_ while additionally they are also typed as _undefined_.
 
-This trick will not only forbid defining keys of both source types at the same time (since the type of each key is explicitly `undefined`), but also _allow_ us to not need to define all keys all of the time since each set of keys is optional on each variant.
+This trick will not only forbid having keys of both source types defined at the same time (since the type of each key is explicitly `undefined`), but also _allow_ us to not need to define all keys all of the time since each set of keys is optional on each variant.
+
+>_Fun fact: The actual TypeScript code for `XOR` [is generated programmatically](https://github.com/maninak/ts-xor/pull/27) using the TypeScript Compiler API._ 🦾
 
 ## Installation
 
@@ -73,8 +75,6 @@ npm install -D ts-xor
 ```
 
 ## Usage
-
-### A simple scenario
 
 ```typescript
 import type { XOR } from 'ts-xor'
@@ -90,7 +90,32 @@ test = { a: '', b: '' }  // error
 test = {}                // error
 ```
 
-### A realistic scenario
+### XORing more than two types
+
+If you want to create a type as the product of the logical XOR operation between multiple types (more than two and even up to 200), then just pass them as additional comma-separated generic params.
+
+```typescript
+let test: XOR<A, B, C, D, E, F>
+```
+
+`ts-xor` can easily handle up to 200 generic params. 💯
+
+### Pattern 1: Typing a fetcher returning data XOR error
+
+Using `XOR` we can type a function that returns either the data requested from an API or a response object like so:
+
+```ts
+type FetchResult<P extends object> = XOR<
+  { data: P },
+  { error: FetchError<P> },
+>
+```
+
+Now TypeScript has all the necessary information to infer if the `FetchResult` contains a `data` or `error` key _at compile time_ which results in very clean, yet strictly typed, handling code.
+
+![data or error intellisense demo](./assets/dataOrError-intellisense.gif)
+
+### Pattern 2: Typing an API's response shape
 
 Let's assume that we have the following spec for a weather forecast API's response:
 
@@ -100,8 +125,6 @@ Let's assume that we have the following spec for a weather forecast API's respon
 4. The rain, snow members _always_ contain either a member `1h` or a member `3h` with a number value, but _never_ both keys at the same time.
 
 ```typescript
-import type { XOR } from 'ts-xor'
-
 type ForecastAccuracy = XOR<{ '1h': number }, { '3h': number }>
 
 interface WeatherForecastBase {
@@ -132,26 +155,6 @@ const test: WeatherForecast = {
   // snow: { '3h': 1 },           // OK
                                   // error when BOTH `rain` AND `snow` keys are defined at the same time
 }
-```
-
-### XORing more than two types
-
-If you want to create a type as the product of the logical XOR operation between multiple types (more than two), then nest the generic params.
-
-```typescript
-import type { XOR } from 'ts-xor'
-
-interface A { a: string }
-interface B { b: string }
-interface C { c: string }
-
-let test: XOR<A, XOR<B, C>>
-
-test = { a: '' }         // OK
-test = { b: '' }         // OK
-test = { c: '' }         // OK
-test = { a: '', c: '' }  // error
-test = {}                // error
 ```
 
 ## Tests and coverage

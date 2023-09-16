@@ -5,3 +5,4 @@ tsconfig.json
 .gitignore
 .npmrc
 .travis.yml
+.editorconfig
