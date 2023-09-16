@@ -167,20 +167,11 @@ To run all tests locally, execute the following command inside your git-cloned `
 npm run test
 ```
 
-## NPM
-
-This library is [published on NPM](https://www.npmjs.com/package/ts-xor).
-
 ## Licence
 
 Distributed under the MIT license. See [`LICENSE.md`](./LICENCE.md) for more information.
 
-## Contributing
+## Links
 
-This project's commits comply with the [Conventional Commits](https://www.conventionalcommits.org/) guidelines.
-
-1. Fork it (<https://github.com/maninak/ts-xor/fork>)
-2. Create your feature/fix branch (`git checkout -b feat/foobar`)
-3. Commit your changes (`git commit -am 'feat(foobar): add support for foobar tricks'`)
-4. Push to the branch (`git push origin feat/fooBar`)
-5. Create a new Pull Request
+This library is [published on NPM](https://www.npmjs.com/package/ts-xor).
+Check me on [X/Twitter](https://twitter.com/maninak_)
