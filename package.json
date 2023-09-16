@@ -19,7 +19,10 @@
   },
   "sideEffects": false,
   "scripts": {
+    "codegen": "node ./src/xorFactory.js > ./src/types/xor.ts",
+    "prebuild": "npm run codegen",
     "build": "tsup src/index.ts --format esm,cjs --dts --sourcemap --clean",
+    "pretest": "npm run codegen",
     "test": "npm run test:smoke && npm run test:unit  && npm run test:package",
     "test:smoke": "tsc -p . --noEmit",
     "test:unit": "sh scripts/run-tests.sh",
