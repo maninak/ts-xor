@@ -174,4 +174,5 @@ Distributed under the MIT license. See [`LICENSE.md`](./LICENCE.md) for more inf
 ## Links
 
 This library is [published on NPM](https://www.npmjs.com/package/ts-xor).
-Check me on [X/Twitter](https://twitter.com/maninak_)
+
+🫶 Follow me on [Twitter](https://twitter.com/maninak_).
