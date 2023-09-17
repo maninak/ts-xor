@@ -95,12 +95,12 @@ test = {}                // error
 If you want to create a type as the product of the logical XOR operation between multiple types (more than two and even up to 200), then just pass them as additional comma-separated generic params.
 
 ```typescript
-let test: XOR<A, B, C, D, E, F>
+let test: XOR<A, B, C, D, E, F, ...>
 ```
 
-`ts-xor` can easily handle up to 200 generic params. 💯
+`ts-xor` can easily handle up to 200 generic params. 💯💯
 
-### Pattern 1: Typing a fetcher returning data XOR error
+### Pattern 1: Typing a fetcher returning either data or error
 
 Using `XOR` we can type a function that returns either the data requested from an API or a response object like so:
 
@@ -111,7 +111,7 @@ type FetchResult<P extends object> = XOR<
 >
 ```
 
-Now TypeScript has all the necessary information to infer if the `FetchResult` contains a `data` or `error` key _at compile time_ which results in very clean, yet strictly typed, handling code.
+Now TypeScript has all the necessary information to infer if `FetchResult` contains a `data` or an `error` key _at compile time_ which results in very clean, yet strictly typed handling code.
 
 ![data or error intellisense demo](./assets/dataOrError-intellisense.gif)
 
