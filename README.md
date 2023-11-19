@@ -167,12 +167,12 @@ To run all tests locally, execute the following command inside your git-cloned `
 npm run test
 ```
 
-## Licence
+## Check Also
 
-Distributed under the MIT license. See [`LICENSE.md`](./LICENCE.md) for more information.
+- [maninak/eslint-config](https://github.com/maninak/eslint-config) - A batteries-included, plug-n-play, opinionated linter and formater aiming for maximum DX and minimum friction. Supports JS, TS, Vue, JSX, ...
 
-## Links
+🫶 Follow me on [X](https://twitter.com/maninak_).
 
-This library is [published on NPM](https://www.npmjs.com/package/ts-xor).
+## License
 
-🫶 Follow me on [Twitter](https://twitter.com/maninak_).
+[MIT](./LICENSE.md) License &copy; 2019-PRESENT [Kostis Maninakis](https://maninak.github.io)
