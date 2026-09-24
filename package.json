@@ -41,7 +41,7 @@
     "xor",
     "maninak"
   ],
-  "author": "Kostis Maninakis <maninak@protonmail.com> (https://maninak.github.io)",
+  "author": "Kostis Maninakis <maninak@protonmail.com> (https://maninak.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/maninak/ts-xor/issues"

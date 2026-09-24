@@ -175,4 +175,4 @@ npm run test
 
 ## License
 
-[MIT](./LICENSE.md) License &copy; 2019-PRESENT [Kostis Maninakis](https://maninak.github.io)
+[MIT](./LICENSE.md) License &copy; 2019-PRESENT [Kostis Maninakis](https://maninak.com)
